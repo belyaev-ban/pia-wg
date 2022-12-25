@@ -51,9 +51,12 @@ class piawg:
             return False
 
     def generate_keys(self):
-        self.privatekey = subprocess.run(['wg', 'genkey'], stdout=subprocess.PIPE, encoding="utf-8").stdout.strip()
-        self.publickey = subprocess.run(['wg', 'pubkey'], input=self.privatekey, stdout=subprocess.PIPE,
-                                        encoding="utf-8").stdout.strip()
+        #self.privatekey = subprocess.run(['wg', 'genkey'], stdout=subprocess.PIPE, encoding="utf-8").stdout.strip()
+        #self.publickey = subprocess.run(['wg', 'pubkey'], input=self.privatekey, stdout=subprocess.PIPE, encoding="utf-8").stdout.strip()
+        with open("privatekey") as f:
+            self.privatekey = f.readline().strip('\n')
+        with open("publickey") as f:
+            self.publickey = f.readline().strip('\n')
 
     def addkey(self):
         # Get common name and IP address for wireguard endpoint in region
