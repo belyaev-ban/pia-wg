@@ -1,4 +1,6 @@
-
 venv/
 __pycache__/
 PIA-*
+wg0.conf
+publickey
+privatekey
